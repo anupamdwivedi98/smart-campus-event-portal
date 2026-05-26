@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IILM Event Management Portal — Web Technology Lab Submission" />
+  <title>IILM Events · Web Technology Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <!-- ===== Header ===== -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="#home" class="brand" data-tab="home">
+        <img src="/assets/logo.png" alt="IILM" class="brand-logo" />
+        <span class="brand-name">Events</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <button class="nav-link" data-tab="mydash" data-auth="required">My Dashboard</button>
+        <button class="nav-link admin-only" data-tab="exp5" hidden>Admin</button>
+      </nav>
+
+      <div class="auth-actions">
+        <span class="auth-user" hidden>
+          <span class="material-symbols-outlined" aria-hidden="true">account_circle</span>
+          <span class="auth-user-name"></span>
+        </span>
+        <button class="btn btn-ghost" id="btnLogin">Login</button>
+        <button class="btn btn-primary" id="btnSignup">Sign up</button>
+        <button class="btn btn-ghost" id="btnLogout" hidden>Logout</button>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== Experiment Tab Bar ===== -->
+  <div class="exp-shell" role="region" aria-label="Experiments">
+    <div class="container">
+      <div class="exp-shell-head">
+        <div>
+          <span class="eyebrow">Web Technology Lab</span>
+          <h1 class="exp-shell-title">Experiment Portal</h1>
+        </div>
+        <p class="exp-shell-note">Each tab below opens one of the seven curriculum experiments, integrated into a single working product.</p>
+      </div>
+      <div class="tab-bar" role="tablist">
+        <button class="tab active" data-tab="home"        role="tab">Home</button>
+        <button class="tab"        data-tab="exp1"        role="tab">Exp 1 · HTML</button>
+        <button class="tab"        data-tab="exp2"        role="tab">Exp 2 · Interactive</button>
+        <button class="tab"        data-tab="exp3"        role="tab">Exp 3 · Validation</button>
+        <button class="tab"        data-tab="exp4"        role="tab">Exp 4 · Wizard</button>
+        <button class="tab"        data-tab="exp5"        role="tab">Exp 5 · Registrations</button>
+        <button class="tab"        data-tab="exp6"        role="tab">Exp 6 · Admin API</button>
+        <button class="tab"        data-tab="exp7"        role="tab">Exp 7 · AJAX</button>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" class="container" role="main">
+
+    <!-- ============================================================
+         HOME
+         ============================================================ -->
+    <section class="panel active" id="panel-home" role="tabpanel">
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="chip">Academic Excellence</span>
+          <h2 class="hero-title">Empowering Student Innovation</h2>
+          <p class="hero-sub">Discover workshops, hackathons, and capstone events at IILM University — all managed through one unified portal.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" data-tab="exp7">Explore Events</button>
+            <button class="btn btn-outline" data-tab="exp4">Register Now</button>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-blob"></div>
+          <div class="hero-card">
+            <div class="hero-card-row"><span class="dot dot-ok"></span><span>Account System</span><small>Live</small></div>
+            <div class="hero-card-row"><span class="dot dot-ok"></span><span>Event CRUD API</span><small>Live</small></div>
+            <div class="hero-card-row"><span class="dot dot-ok"></span><span>Registration Pipeline</span><small>Live</small></div>
+            <div class="hero-card-row"><span class="dot dot-ok"></span><span>AJAX + Search</span><small>Live</small></div>
+          </div>
+        </div>
+      </div>
+
+      <section class="progress-section">
+        <div class="section-head">
+          <div>
+            <h3>Project Progress</h3>
+            <p class="muted">Web Technology Lab · 7 Integrated Experiments</p>
+          </div>
+        </div>
+        <div class="progress-grid" id="progressGrid"></div>
+      </section>
+    </section>
+
+    <!-- ============================================================
+         EXP 1 · Semantic HTML homepage layout
+         ============================================================ -->
+    <section class="panel" id="panel-exp1" role="tabpanel" hidden>
+      <div class="panel-head">
+        <span class="eyebrow">Experiment 1</span>
+        <h2>Semantic HTML &amp; Responsive Layout</h2>
+        <p class="muted">A pure HTML + CSS homepage using semantic tags (<code>header</code>, <code>nav</code>, <code>main</code>, <code>article</code>, <code>footer</code>) with CSS Grid and Flexbox. No JavaScript on this panel.</p>
+      </div>
+
+      <article class="card exp1-hero">
+        <header>
+          <h3>IILM Campus Events</h3>
+          <p class="muted">Workshops · Bootcamps · Hackathons · Seminars</p>
+        </header>
+        <p>This panel demonstrates a mobile-first, semantic HTML structure. Resize the browser — the event grid collapses gracefully into a single column on mobile, two on tablet, three on desktop.</p>
+      </article>
+
+      <section class="exp1-grid" aria-label="Featured events">
+        <article class="card event-card">
+          <header><span class="tag tag-blue">Workshop</span><time datetime="2026-05-12">May 12, 2026</time></header>
+          <h4>Applied AI &amp; Machine Learning</h4>
+          <p>A hands-on session on predictive modeling and neural networks.</p>
+          <footer><span>Lab 402</span></footer>
+        </article>
+        <article class="card event-card">
+          <header><span class="tag tag-red">Bootcamp</span><time datetime="2026-05-18">May 18–20, 2026</time></header>
+          <h4>Modern Web Dev Intensive</h4>
+          <p>React, Tailwind, and modern frontend tooling — three immersive days.</p>
+          <footer><span>Main Auditorium</span></footer>
+        </article>
+        <article class="card event-card">
+          <header><span class="tag tag-neutral">Hackathon</span><time datetime="2026-06-05">June 05, 2026</time></header>
+          <h4>Smart Campus IoT Challenge</h4>
+          <p>Build connected devices for real-world sustainability on campus.</p>
+          <footer><span>Innovation Hub</span></footer>
+        </article>
+      </section>
+    </section>
+
+    <!-- ============================================================
+         EXP 2 · Interactive event cards
+         ============================================================ -->
+    <section class="panel" id="panel-exp2" role="tabpanel" hidden>
+      <div class="panel-head">
+        <span class="eyebrow">Experiment 2</span>
+        <h2>Client-Side Interactivity</h2>
+        <p class="muted">JavaScript adds category filters, expandable detail panels, and keyboard-accessible toggles to static cards.</p>
+      </div>
+
+      <div class="filter-row" role="toolbar" aria-label="Category filters" id="exp2Filters">
+        <button class="filter-chip active" data-filter="all">All</button>
+        <button class="filter-chip" data-filter="workshop">Workshop</button>
+        <button class="filter-chip" data-filter="bootcamp">Bootcamp</button>
+        <button class="filter-chip" data-filter="hackathon">Hackathon</button>
+        <button class="filter-chip" data-filter="seminar">Seminar</button>
+      </div>
+
+      <div class="exp1-grid" id="exp2Cards"></div>
+    </section>
+
+    <!-- ============================================================
+         EXP 3 · Registration form validation
+         ============================================================ -->
+    <section class="panel" id="panel-exp3" role="tabpanel" hidden>
+      <div class="panel-head">
+        <span class="eyebrow">Experiment 3</span>
+        <h2>Registration Form Validation</h2>
+        <p class="muted">Real-time client-side validation with inline error states. The form draft is saved to <code>localStorage</code> so you can leave and return.</p>
+      </div>
+
+      <form class="form-card" id="exp3Form" novalidate>
+        <div class="form-row">
+          <label for="f3Name">Full name</label>
+          <input id="f3Name" name="fullName" type="text" required minlength="2" maxlength="120" autocomplete="name" />
+          <small class="error" data-for="f3Name"></small>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label for="f3Email">Email</label>
+            <input id="f3Email" name="email" type="email" required autocomplete="email" />
+            <small class="error" data-for="f3Email"></small>
+          </div>
+          <div class="form-row">
+            <label for="f3Phone">Phone</label>
+            <input id="f3Phone" name="phone" type="tel" required autocomplete="tel" placeholder="+91 98765 43210" />
+            <small class="error" data-for="f3Phone"></small>
+          </div>
+        </div>
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label for="f3Event">Event</label>
+            <select id="f3Event" name="eventId" required>
+              <option value="" disabled selected>Choose an event</option>
+            </select>
+            <small class="error" data-for="f3Event"></small>
+          </div>
+          <div class="form-row">
+            <label for="f3Date">Preferred date</label>
+            <input id="f3Date" name="date" type="date" required />
+            <small class="error" data-for="f3Date"></small>
+          </div>
+        </div>
+        <label class="checkbox-row">
+          <input type="checkbox" id="f3Terms" name="terms" required />
+          <span>I agree to the event code of conduct.</span>
+        </label>
+        <small class="error" data-for="f3Terms"></small>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-ghost" id="f3Reset">Clear draft</button>
+          <button type="submit" class="btn btn-primary" id="f3Submit" disabled>Validate &amp; Submit</button>
+        </div>
+        <p class="form-status" id="f3Status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- ============================================================
+         EXP 4 · Multi-step registration wizard
+         ============================================================ -->
+    <section class="panel" id="panel-exp4" role="tabpanel" hidden>
+      <div class="panel-head">
+        <span class="eyebrow">Experiment 4</span>
+        <h2>Multi-step Registration Wizard</h2>
+        <p class="muted">Breaks a long form into three guided stages with validation at each step, progress tracking, JSON draft persistence, and a final review screen. Submission posts live to <code>/api/registrations</code>.</p>
+      </div>
+
+      <form class="form-card wizard" id="exp4Form" novalidate>
+        <div class="stepper" aria-label="Wizard steps">
+          <div class="step active" data-step="1"><span>1</span><small>Your Details</small></div>
+          <div class="step"        data-step="2"><span>2</span><small>Event Selection</small></div>
+          <div class="step"        data-step="3"><span>3</span><small>Review</small></div>
+        </div>
+
+        <!-- Step 1 -->
+        <fieldset class="wizard-step active" data-step="1">
+          <legend class="sr-only">Personal Details</legend>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label for="w1First">First name</label>
+              <input id="w1First" name="firstName" required />
+              <small class="error" data-for="w1First"></small>
+            </div>
+            <div class="form-row">
+              <label for="w1Last">Last name</label>
+              <input id="w1Last" name="lastName" required />
+              <small class="error" data-for="w1Last"></small>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="w1Email">University email</label>
+            <input id="w1Email" name="email" type="email" required />
+            <small class="error" data-for="w1Email"></small>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label for="w1Phone">Phone</label>
+              <input id="w1Phone" name="phone" type="tel" />
+              <small class="error" data-for="w1Phone"></small>
+            </div>
+            <div class="form-row">
+              <label for="w1Dept">Department</label>
+              <select id="w1Dept" name="department">
+                <option value="">Select department</option>
+                <option>School of Engineering</option>
+                <option>School of Management</option>
+                <option>School of Law</option>
+                <option>School of Design</option>
+                <option>Guest / External</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Step 2 -->
+        <fieldset class="wizard-step" data-step="2" hidden>
+          <legend class="sr-only">Event Selection</legend>
+          <div class="form-row">
+            <label for="w2Event">Which event?</label>
+            <select id="w2Event" name="eventId" required>
+              <option value="" disabled selected>Loading events…</option>
+            </select>
+            <small class="error" data-for="w2Event"></small>
+          </div>
+          <div class="form-row">
+            <label for="w2Notes">Anything we should know? <small class="muted">(optional)</small></label>
+            <textarea id="w2Notes" name="notes" rows="4" maxlength="1000"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Step 3 -->
+        <fieldset class="wizard-step" data-step="3" hidden>
+          <legend class="sr-only">Review</legend>
+          <div class="review-card" id="w3Review"></div>
+          <p class="muted" id="w3AuthHint" hidden>You'll need to be logged in to submit. Use the Login button at the top.</p>
+        </fieldset>
+
+        <div class="form-actions wizard-actions">
+          <button type="button" class="btn btn-ghost" id="wPrev" disabled>Back</button>
+          <button type="button" class="btn btn-primary" id="wNext">Next</button>
+          <button type="submit" class="btn btn-primary" id="wSubmit" hidden>Submit registration</button>
+        </div>
+        <p class="form-status" id="wStatus" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- ============================================================
+         EXP 5 · Registrations dashboard (admin)
+         ============================================================ -->
+    <section class="panel" id="panel-exp5" role="tabpanel" hidden>
+      <div class="panel-head">
+        <span class="eyebrow">Experiment 5</span>
+        <h2>Server-side Registration Dashboard</h2>
+        <p class="muted">Admin-only view of every registration stored in MySQL, pulled live from the <code>registrations</code> table via Express.</p>
+      </div>
+      <div id="exp5AuthGate" class="empty-state">
+        <p>Admin login required to view the dashboard.</p>
+        <p class="muted">Default admin — email: <code>admin@iilm.edu</code> &nbsp;·&nbsp; password: <code>Admin@123</code></p>
+      </div>
+      <div id="exp5Content" hidden>
+        <div class="toolbar">
+          <input class="input" id="exp5Search" placeholder="Search by name, email, or event…" />
+          <button class="btn btn-outline" id="exp5Refresh">Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="exp5Table">
+            <thead>
+              <tr><th>#</th><th>Student</th><th>Email</th><th>Event</th><th>Date</th><th>Status</th><th>Registered</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EXP 6 · Admin events CRUD
+         ============================================================ -->
+    <section class="panel" id="panel-exp6" role="tabpanel" hidden>
+      <div class="panel-head">
+        <span class="eyebrow">Experiment 6</span>
+        <h2>Admin Event CRUD API</h2>
+        <p class="muted">Express REST endpoints secured with session-based auth. Create, update, or delete events — changes hit MySQL immediately.</p>
+      </div>
+      <div id="exp6AuthGate" class="empty-state">
+        <p>Admin login required to manage events.</p>
+      </div>
+      <div id="exp6Content" hidden>
+        <div class="toolbar">
+          <button class="btn btn-primary" id="exp6New">+ New event</button>
+          <button class="btn btn-outline" id="exp6Refresh">Refresh</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table" id="exp6Table">
+            <thead>
+              <tr><th>#</th><th>Title</th><th>Category</th><th>Date</th><th>Location</th><th>Capacity</th><th>Actions</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <form class="form-card" id="exp6Form" hidden>
+          <h3 id="exp6FormTitle">New event</h3>
+          <input type="hidden" name="id" />
+          <div class="form-row">
+            <label>Title</label><input name="title" required maxlength="180" />
+          </div>
+          <div class="form-row">
+            <label>Description</label><textarea name="description" rows="3" required></textarea>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label>Category</label>
+              <select name="category" required>
+                <option value="workshop">Workshop</option>
+                <option value="bootcamp">Bootcamp</option>
+                <option value="hackathon">Hackathon</option>
+                <option value="seminar">Seminar</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>Date</label><input name="event_date" type="date" required />
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="form-row">
+              <label>Location</label><input name="location" required maxlength="180" />
+            </div>
+            <div class="form-row">
+              <label>Capacity</label><input name="capacity" type="number" min="1" value="100" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Image URL <small class="muted">(optional)</small></label>
+            <input name="image_url" type="url" maxlength="500" />
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn btn-ghost" id="exp6Cancel">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+          <p class="form-status" id="exp6Status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         EXP 7 · AJAX event listing
+         ============================================================ -->
+    <section class="panel" id="panel-exp7" role="tabpanel" hidden>
+      <div class="panel-head">
+        <span class="eyebrow">Experiment 7</span>
+        <h2>AJAX Event Listing</h2>
+        <p class="muted">Live event data fetched from the Express API using the Fetch API. Type to filter — requests are debounced, with loading and error states.</p>
+      </div>
+      <div class="toolbar">
+        <div class="search-field">
+          <span class="material-symbols-outlined" aria-hidden="true">search</span>
+          <input id="exp7Search" class="input" placeholder="Search events…" autocomplete="off" />
+        </div>
+        <div class="filter-row small" id="exp7Filters">
+          <button class="filter-chip active" data-filter="">All</button>
+          <button class="filter-chip" data-filter="workshop">Workshop</button>
+          <button class="filter-chip" data-filter="bootcamp">Bootcamp</button>
+          <button class="filter-chip" data-filter="hackathon">Hackathon</button>
+          <button class="filter-chip" data-filter="seminar">Seminar</button>
+        </div>
+      </div>
+      <div class="ajax-status" id="exp7Status" aria-live="polite"></div>
+      <div class="exp1-grid" id="exp7Cards"></div>
+    </section>
+
+    <!-- ============================================================
+         MY DASHBOARD (authenticated users)
+         ============================================================ -->
+    <section class="panel" id="panel-mydash" role="tabpanel" hidden>
+      <div class="panel-head">
+        <span class="eyebrow">My Account</span>
+        <h2>My Registrations</h2>
+        <p class="muted">Events you've signed up for.</p>
+      </div>
+      <div id="mydashContent"></div>
+    </section>
+
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div>
+        <img src="/assets/logo.png" alt="IILM" class="brand-logo brand-logo-sm" />
+        <p class="muted">© 2026 IILM Event Portal · Web Technology Lab</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Auth Modal ===== -->
+  <div class="modal-backdrop" id="authModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <header class="modal-head">
+        <h3 id="authTitle">Login</h3>
+        <button class="icon-btn" id="authClose" aria-label="Close">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </header>
+      <div class="modal-tabs">
+        <button class="modal-tab active" data-mode="login">Login</button>
+        <button class="modal-tab" data-mode="signup">Sign up</button>
+      </div>
+
+      <form class="modal-body" id="loginForm" novalidate>
+        <div class="form-row">
+          <label for="loginEmail">Email</label>
+          <input id="loginEmail" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="form-row">
+          <label for="loginPass">Password</label>
+          <input id="loginPass" name="password" type="password" autocomplete="current-password" required />
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Login</button>
+        <p class="form-status" id="loginStatus" role="status" aria-live="polite"></p>
+      </form>
+
+      <form class="modal-body" id="signupForm" novalidate hidden>
+        <div class="form-row">
+          <label for="suName">Full name</label>
+          <input id="suName" name="fullName" required maxlength="120" />
+        </div>
+        <div class="form-row">
+          <label for="suEmail">Email</label>
+          <input id="suEmail" name="email" type="email" required />
+        </div>
+        <div class="form-grid-2">
+          <div class="form-row">
+            <label for="suStudent">Student ID <small class="muted">(optional)</small></label>
+            <input id="suStudent" name="studentId" />
+          </div>
+          <div class="form-row">
+            <label for="suDept">Department</label>
+            <select id="suDept" name="department">
+              <option value="">Select</option>
+              <option>School of Engineering</option>
+              <option>School of Management</option>
+              <option>School of Law</option>
+              <option>School of Design</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="suPass">Password <small class="muted">(min 8 characters)</small></label>
+          <input id="suPass" name="password" type="password" minlength="8" required autocomplete="new-password" />
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Create account</button>
+        <p class="form-status" id="signupStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== Toast ===== -->
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="/js/app.js" defer></script>
+  <script src="/js/exp2.js" defer></script>
+  <script src="/js/exp3.js" defer></script>
+  <script src="/js/exp4.js" defer></script>
+  <script src="/js/exp5.js" defer></script>
+  <script src="/js/exp6.js" defer></script>
+  <script src="/js/exp7.js" defer></script>
+</body>
+</html>
